@@ -1,5 +1,7 @@
 package app.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,9 +24,16 @@ public class Produto {
 	private long id;
 	private String nome;
 	private int valor;
+	private String categoria;
 	
-	 @ManyToMany(mappedBy = "produtos")
-	// private List<Venda> vendas;
+	 public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	@ManyToMany(mappedBy = "produtos")
+	private List<Venda> venda;
 	
 	public long getId() {
 		return id;
@@ -37,6 +46,12 @@ public class Produto {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public List<Venda> getVenda() {
+		return venda;
+	}
+	public void setVenda(List<Venda> venda) {
+		this.venda = venda;
 	}
 	public int getValor() {
 		return valor;

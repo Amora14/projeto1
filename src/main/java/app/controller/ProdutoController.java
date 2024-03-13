@@ -122,7 +122,7 @@ public class ProdutoController {
 
             List<Produto> lista = this.prodservice.buscarProdutoAcimaValor(valor);
             return new ResponseEntity<>(lista, HttpStatus.OK);
-
+ 
         } catch (Exception e) {
 
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -130,6 +130,22 @@ public class ProdutoController {
         }
 
     }
+	
+	@GetMapping("/findbycategoria")
+	public ResponseEntity<List<Produto>> findByCategoria (@RequestParam String categoria){
+		
+		try {
+			
+			List<Produto> lista = this.prodservice.findByCategoria(categoria);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
 	
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import app.entity.Produto;
 import app.repository.ProdutoRepository;
 
+@Service
 public class ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
@@ -46,5 +47,9 @@ public class ProdutoService {
 	public List<Produto> buscarProdutoAcimaValor(int valor){
         return this.produtoRepository.buscarProdutoAcimaValor(valor);
     } 
+	
+	public List<Produto> findByCategoria(String categoria){
+		return this.produtoRepository.findByCategoria(categoria);
+	}
 
 }

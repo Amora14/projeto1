@@ -101,7 +101,7 @@ public class FuncionarioController {
 	}
 	
 	@GetMapping("/findbymatricula")
-	public ResponseEntity<List<Funcionario>> findByNome (@RequestParam int matricula){
+	public ResponseEntity<List<Funcionario>> findByMatricula (@RequestParam int matricula){
 		
 		try {
 			
