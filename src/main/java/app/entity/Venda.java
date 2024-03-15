@@ -1,6 +1,10 @@
 package app.entity;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +13,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,35 +29,16 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @NotBlank(message = "campo vazio")
     private String enderecoEntrega;
+    
+    @NotNull(message = " campo vazio")
     private double valorTotal;
     
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    @NotBlank(message = "campo vazio")
+    private String data; 
     
-    @ManyToOne
-    @JoinColumn(name = "funcionario")
-    private Funcionario funcionario;
-    
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getEnderecoEntrega() {
-		return enderecoEntrega;
-	}
-	public void setEnderecoEntrega(String enderecoEntrega) {
-		this.enderecoEntrega = enderecoEntrega;
-	}
-	public double getValorTotal() {
-		return valorTotal;
-	}
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
 	
 	@ManyToMany
     @JoinTable
@@ -61,4 +48,44 @@ public class Venda {
         inverseJoinColumns = @JoinColumn(name = "produto_id")
     )
     private List<Produto> produtos;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("venda")
+    private Cliente cliente;
+    
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("venda")
+	private Funcionario funcionario;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	public void setEnderecoEntrega(String enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 }

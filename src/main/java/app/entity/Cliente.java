@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -21,9 +23,17 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotBlank(message = "campo vazio")
     private String nome;
+	
+	@NotBlank(message = "campo vazio")
     private String cpf;
+	
+	 @NotNull(message = " campo vazio")
     private int idade;
+    
+    @NotBlank(message = "campo vazio")
     private String telefone;
 	
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)

@@ -115,9 +115,26 @@ public class VendaController {
 
 		}
 		
+		
+		
 	}
     
-    @GetMapping("/buscarClientesAcimaIdade")
+    @GetMapping("/findByData")
+   	public ResponseEntity<List<Venda>> findByData (@RequestParam String data){
+   		
+   		try {
+   			
+   			List<Venda> lista = this.vendaService.findByData(data);
+   			return new ResponseEntity<>(lista, HttpStatus.OK);
+   			
+   		} catch (Exception e) {
+   			
+   			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+   		}
+    }	
+    
+    @GetMapping("/buscarVendasAcimaValor")
 	public ResponseEntity<List<Venda>> buscarVendasAcimaValor (@RequestParam int valor){
 		
 		try {

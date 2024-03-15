@@ -42,6 +42,10 @@ public class VendaService {
 		return this.vendaRepository.findByEnderecoEntrega(enderecoEntrega);
 	}
 	
+	public List<Venda> findByData(String data){
+		return this.vendaRepository.findByData(data);
+	}
+	
 	public List<Venda> buscarVendasAcimaValor(int valor){
 		return this.vendaRepository.buscarVendasAcimaValor(valor);
 	}

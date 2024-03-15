@@ -2,11 +2,15 @@ package app.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +26,14 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	 @NotBlank(message = "campo vazio")
 	private String nome;
+	
+	@NotNull(message = " campo vazio")
 	private int valor;
+	
+	 @NotBlank(message = "campo vazio")
 	private String categoria;
 	
 	 public String getCategoria() {
@@ -33,6 +43,7 @@ public class Produto {
 		this.categoria = categoria;
 	}
 	@ManyToMany(mappedBy = "produtos")
+	@JsonIgnoreProperties("produtos")
 	private List<Venda> venda;
 	
 	public long getId() {
