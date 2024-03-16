@@ -20,6 +20,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,19 +29,20 @@ import lombok.Setter;
 public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     
     @NotBlank(message = "campo vazio")
     private String enderecoEntrega;
     
-    @NotNull(message = " campo vazio")
+
+	@NotNull(message = " campo vazio")
     private double valorTotal;
     
     @NotBlank(message = "campo vazio")
     private String data; 
     
 	
-	@ManyToMany
+    @ManyToMany
     @JoinTable
     (
         name = "venda_produto",
@@ -48,15 +50,16 @@ public class Venda {
         inverseJoinColumns = @JoinColumn(name = "produto_id")
     )
     private List<Produto> produtos;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("venda")
-    private Cliente cliente;
-    
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("venda")
-	private Funcionario funcionario;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("venda")
+    private Cliente cliente;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("venda")
+    private Funcionario funcionario;
+
+    
 	public Long getId() {
 		return id;
 	}
