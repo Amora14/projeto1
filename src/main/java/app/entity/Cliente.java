@@ -36,8 +36,8 @@ public class Cliente {
     @NotBlank(message = "campo vazio")
     private String telefone;
 	
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Venda> vendas;
+   // @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+   // private List<Venda> vendas;
 
 	public Long getId() {
 		return id;

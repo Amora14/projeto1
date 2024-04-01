@@ -42,9 +42,9 @@ public class Produto {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	@ManyToMany(mappedBy = "produtos")
-	@JsonIgnoreProperties("produtos")
-	private List<Venda> venda;
+//	@ManyToMany(mappedBy = "produtos")
+	//@JsonIgnoreProperties("produtos")
+//	private List<Venda> venda;
 	
 	public long getId() {
 		return id;
@@ -58,12 +58,12 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<Venda> getVenda() {
+	/*public List<Venda> getVenda() {
 		return venda;
 	}
 	public void setVenda(List<Venda> venda) {
 		this.venda = venda;
-	}
+	}*/
 	public int getValor() {
 		return valor;
 	}

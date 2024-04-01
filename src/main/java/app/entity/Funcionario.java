@@ -36,9 +36,9 @@ public class Funcionario {
 	@NotNull(message = "campo vazio")
 	private int matricula;
 	
-   @OneToMany(mappedBy = "funcionario")
-   @JsonIgnoreProperties("funcionario")
-	private List<Venda> venda;
+ //  @OneToMany(mappedBy = "funcionario")
+ //  @JsonIgnoreProperties("funcionario")
+//	private List<Venda> venda;
 		
 	public long getId() {
 		return id;

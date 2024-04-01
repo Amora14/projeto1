@@ -31,7 +31,6 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    @NotBlank(message = "campo vazio")
     private String enderecoEntrega;
     
 
@@ -41,8 +40,18 @@ public class Venda {
     @NotBlank(message = "campo vazio")
     private String data; 
     
+    @NotBlank
+    private String status;
 	
-    @ManyToMany
+    public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		status = status;
+	}
+
+	@ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable
     (
         name = "venda_produto",
@@ -51,15 +60,46 @@ public class Venda {
     )
     private List<Produto> produtos;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JsonIgnoreProperties("venda")
     private Cliente cliente;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JsonIgnoreProperties("venda")
     private Funcionario funcionario;
 
     
+    
+    
+    
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}
