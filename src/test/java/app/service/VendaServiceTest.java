@@ -1,5 +1,6 @@
 package app.service;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -40,14 +41,14 @@ public class VendaServiceTest {
 		assertEquals(200, soma);
 		
 	}
-	/*
+	
 	@Test
 	@DisplayName("teste exception")	
-	void exception() {
+	void exceptionsoma() {
 		assertThrows(Exception.class,
 				()->{double soma= this.vendaService.calcularvalor(null);});
 	}
-	*/
+	
 	
 	@Test
 	@DisplayName("teste de cancelamento")
@@ -60,13 +61,16 @@ public class VendaServiceTest {
 	
 		assertEquals(0, this.vendaService.calcularvalor(venda.getProdutos()));
 	}
-/*	
-	@Test
+
+	/*@Test
 	@DisplayName("teste exception")	
-	void exception() {
+	void exceptionvenda() {
 		assertThrows(Exception.class,
-				()->{string valid= this.vendaService.verificarstatus(null); });
+				()->{ = this.vendaService.verificarstatus(null); });
 	}
-	*/
+	
+*/
+	
+	
 	
 }
