@@ -45,8 +45,9 @@ public class VendaServiceTest {
 	@Test
 	@DisplayName("teste exception")	
 	void exceptionsoma() {
+		List<Produto> lista = new ArrayList<>();
 		assertThrows(Exception.class,
-				()->{double soma= this.vendaService.calcularvalor(null);});
+				()->{double obj= this.vendaService.calcularvalor(lista);});
 	}
 	
 	
@@ -62,14 +63,15 @@ public class VendaServiceTest {
 		assertEquals(0, this.vendaService.calcularvalor(venda.getProdutos()));
 	}
 
-	/*@Test
-	@DisplayName("teste exception")	
+	@Test
+	@DisplayName("teste exception2")	
 	void exceptionvenda() {
+		Venda venda = new Venda();
 		assertThrows(Exception.class,
-				()->{ = this.vendaService.verificarstatus(null); });
+				()->{Venda obj = this.vendaService.verificarstatus(venda);});
 	}
 	
-*/
+
 	
 	
 	

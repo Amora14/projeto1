@@ -19,7 +19,7 @@ public class VendaService {
 		venda.setValorTotal(valorsoma);		
 		
 		this.vendaRepository.save(venda);
-		return venda.getId()+ " salvo com sucesso";
+		return "Venda salva com sucesso.";
 	}
 	
 	public double calcularvalor(List<Produto> produto) {
